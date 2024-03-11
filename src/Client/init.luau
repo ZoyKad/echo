@@ -1,3 +1,4 @@
+local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Events = require(script.Parent.Events)
@@ -5,56 +6,67 @@ local Guard = require(ReplicatedStorage.Packages.Guard)
 local ServedAction = require(script.ServedAction)
 local SubscribedAction = require(script.SubscribedAction)
 
+export type ServedAction = ServedAction.ServedAction
+export type SubscribedAction = SubscribedAction.SubscribedAction
+
 local subActionPool = {}
+local subCallbacks = {}
 local servedActionPool = {}
 
-local Client = {}
+local Client = {
+    ServedAction = ServedAction,
+    SubscribedAction = SubscribedAction
+}
 
-function Client:RegisterAction(name: string): ServedAction.ServedAction
+function Client:RegisterAction(name: string): ServedAction
     assert(Guard.String(name), "Invalid argument #1 to RegisterAction (string expected)")
-    
-    if servedActionPool[name] then
-        return servedActionPool[name]
+
+    local id = HttpService:GenerateGUID()
+
+    local newAction = ServedAction(name, id)
+    servedActionPool[id] = newAction
+
+    local function removeAction()
+        servedActionPool[id] = nil
     end
 
-    local newAction = ServedAction(name)
-    servedActionPool[name] = newAction
+    newAction._destroying:Connect(removeAction)
     
     return newAction
 end
 
-function Client:SubscribeToAction(name: string): SubscribedAction.SubscribedAction
+function Client:SubscribeToAction(name: string, callback: (SubscribedAction, any?) -> ()): ()
     assert(Guard.String(name), "Invalid argument #1 to SubscribeToAction (string expected)")
 
-    if subActionPool[name] then
-        return subActionPool[name]
+    subCallbacks[name] = callback
+end
+
+local function onActionBegan(actionId: string, actionName: string, ...): ()
+    local subAction = SubscribedAction(actionName)
+    subActionPool[actionId] = subAction
+
+    local function removeAction()
+        subActionPool[actionId] = nil
     end
 
-    local newAction = SubscribedAction(name)
-    subActionPool[name] = newAction
+    subAction.ended:Connect(removeAction)
     
-    return newAction
+    subCallbacks[actionName](subAction,  ...)
 end
 
-local function onActionBegan(actionName: string, ...)
-    if subActionPool[actionName] then
-        subActionPool[actionName].actionBegan:Fire(...)
+local function onActionUpdated(actionId: string, ...): ()
+    if subActionPool[actionId] then
+        subActionPool[actionId].actionUpdated:Fire(...)
     end
 end
 
-local function onActionUpdated(actionName: string, ...)
-    if subActionPool[actionName] then
-        subActionPool[actionName].actionUpdated:Fire(...)
+local function onActionEnded(actionId: string, ...): ()
+    if subActionPool[actionId] then
+        subActionPool[actionId].actionEnded:Fire(...)
     end
 end
 
-local function onActionEnded(actionName: string, ...)
-    if subActionPool[actionName] then
-        subActionPool[actionName].actionEnded:Fire(...)
-    end
-end
-
-local function setupClient()
+local function setupClient(): typeof(Client)
     Events.actionBegan:Client():On(onActionBegan)
     Events.actionUpdated:Client():On(onActionUpdated)
     Events.actionEnded:Client():On(onActionEnded)

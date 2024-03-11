@@ -1,16 +1,17 @@
 local Events = require(script.Parent.Events)
+
 local Server = {}
 
-local function onActionBegan(player: Player, actionName: string, infos: {}?)
-    Events.actionBegan:Server():FireAllExcept(player, actionName, infos)
+local function onActionBegan(...): ()
+    Events.actionBegan:Server():FireAllExcept(...)
 end
 
-local function onActionEnded(player: Player, actionName: string, infos: {}?)
-    Events.actionEnded:Server():FireAllExcept(player, actionName, infos)
+local function onActionEnded(...): ()
+    Events.actionEnded:Server():FireAllExcept(...)
 end
 
-local function onActionUpdated(player: Player, actionName: string, infos: {}?)
-    Events.actionUpdated:Server():FireAllExcept(player, actionName, infos)
+local function onActionUpdated(...): ()
+    Events.actionUpdated:Server():FireAllExcept(...)
 end
 
 local function setupServer()

@@ -2,17 +2,16 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local ActionManager = require(ReplicatedStorage.ActionManager)
 
-
-local throwABallAction = ActionManager:RegisterAction("ThrowABall")
-
 while true do
+    local throwABallAction = ActionManager:RegisterAction("ThrowABall")
+    
     task.wait(5000)
 
     throwABallAction:Start({location = CFrame.new()})
 
     task.wait(1)
 
-    throwABallAction:Dispatch("Throw", {direction = Vector3.new(0, 0, 0)})
+    throwABallAction:Dispatch("Throw", {direction = Vector3.new(0, 1, 0)})
 
     task.wait(3)
 
