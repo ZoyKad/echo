@@ -24,8 +24,8 @@ local function actionEndedCheck(id, infos)
     return guards.id(id), guards.infos(infos)
 end
 
-local function actionUpdateCheck(id, infos)
-    return guards.id(id), guards.infos(infos)
+local function actionUpdateCheck(id, eventName, infos)
+    return guards.id(id), guards.eventName(eventName), guards.infos(infos)
 end
 
 local Events = {
