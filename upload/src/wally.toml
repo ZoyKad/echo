@@ -1,10 +1,12 @@
 [package]
 name = "zoykad/echo"
 authors = ["zoykad"]
-version = "0.1.2"
+version = "0.1.1"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 license = "MIT"
+include = ["wally.project.json", "src", "src/**", "LICENSE", "wally.toml", "README.md"]
+exclude = ["**"]
 
 [dependencies]
 Red = "red-blox/red@2.3.2"
