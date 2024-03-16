@@ -1,5 +1,6 @@
 [package]
-name = "maxca/action-manager-rblx"
+name = "zoykad/echo"
+authors = ["zoykad"]
 version = "0.1.0"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"

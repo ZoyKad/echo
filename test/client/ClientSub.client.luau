@@ -16,8 +16,8 @@ local function throwABall(subAction: ActionManager.SubscribedAction, infos: any)
             ball:ApplyImpulse(updateInfos.direction * 200)
         elseif eventName == "Explode" then
             ball.Color = Color3.new(1, 0, 0)
-            ball.Size = Vector3.new(5, 5, 5)
-            ball.Transparency = 1
+            ball.Size = Vector3.new(10, 10, 10)
+            ball.Transparency = 0
         end
     end
 

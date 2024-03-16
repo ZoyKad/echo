@@ -1,5 +1,5 @@
 {
-  "name": "action-manager-rblx",
+  "name": "echo",
   "tree": {
     "$className": "DataModel",
     "ReplicatedStorage": {
