@@ -1,6 +1,6 @@
 local Config = {
-    serverLogs = true,
-    clientLogs = true,
+    serverLogs = false,
+    clientLogs = false,
 }
 
 return Config

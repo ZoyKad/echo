@@ -1,8 +1,10 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local ActionManager = require(ReplicatedStorage.ActionManager)
+local Echo = require(ReplicatedStorage.Packages.Echo)
 
-local function throwABall(subAction: ActionManager.SubscribedAction, infos: any)
+local echoClient = Echo.Client
+
+local function throwABall(subAction: Echo.SubscribedAction, infos: any)
     local ball = Instance.new("Part", workspace)
     ball.Size = Vector3.new(1, 1, 1)
     ball:PivotTo(infos.location)
@@ -29,4 +31,4 @@ local function throwABall(subAction: ActionManager.SubscribedAction, infos: any)
     subAction.ended:Connect(onEnd)
 end
 
-ActionManager.Client:SubscribeToAction("ThrowABall", throwABall)
+echoClient:SubscribeToAction("ThrowABall", throwABall)

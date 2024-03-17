@@ -1,9 +1,8 @@
 local HttpService = game:GetService("HttpService")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Events = require(script.Parent.Events)
 local Logger = require(script.Parent.Logger)
-local Guard = require(ReplicatedStorage.Packages.Guard)
+local Guard = require(script.Parent.Parent.Guard)
 local ServedAction = require(script.ServedAction)
 local SubscribedAction = require(script.SubscribedAction)
 

@@ -1,9 +1,7 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Events = require(ReplicatedStorage.ActionManager.Events)
-local Logger = require(ReplicatedStorage.ActionManager.Logger)
-local Signal = require(ReplicatedStorage.Packages.Signal)
-local Trove = require(ReplicatedStorage.Packages.Trove)
+local Events = require(script.Parent.Parent.Events)
+local Logger = require(script.Parent.Parent.Logger)
+local Signal = require(script.Parent.Parent.Parent.Signal)
+local Trove = require(script.Parent.Parent.Parent.Trove)
 
 local ServedAction = {}
 

@@ -1,9 +1,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local ActionManager = require(ReplicatedStorage.ActionManager)
+local Echo = require(ReplicatedStorage.Packages.Echo)
+
+local echoClient = Echo.Client
 
 while true do
-    local throwABallAction = ActionManager.Client:RegisterAction("ThrowABall")
+    local throwABallAction = echoClient:RegisterAction("ThrowABall")
     
     task.wait(5)
 

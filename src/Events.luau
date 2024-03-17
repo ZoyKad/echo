@@ -1,7 +1,5 @@
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-local Guard = require(ReplicatedStorage.Packages.Guard)
-local Red = require(ReplicatedStorage.Packages.Red)
+local Guard = require(script.Parent.Parent.Guard)
+local Red = require(script.Parent.Parent.Red)
 
 local guards = {
     infos = Guard.Optional(

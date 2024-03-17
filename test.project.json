@@ -1,0 +1,23 @@
+{
+	"name": "echo-test",
+	"tree": {
+		"$className": "DataModel",
+		"ServerScriptService": {
+			"$path": "test/server"
+		},
+		"ReplicatedStorage": {
+			"$path": "test/shared",
+			"Packages": {
+				"$path": "Packages",
+				"Echo": {
+					"$path": "src"
+				}
+			}
+		},
+		"StarterPlayer": {
+			"StarterPlayerScripts": {
+				"$path": "test/client"
+			}
+		}
+	}
+}
