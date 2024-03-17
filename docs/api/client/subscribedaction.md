@@ -1,6 +1,8 @@
 # SubscribedAction
 
-SubscribedAction is an object created using [Echo:SubscribeToAction](https://app.gitbook.com/o/OdbeDW5ci9zOWzp092i7/s/v10PEnd3F5nmS4BCbqhI/\~/changes/1/api/client#subscribetoaction-name-string-callback-function-subscribedaction)
+SubscribedAction is an object created using [Client:SubscribeToAction()](https://app.gitbook.com/o/OdbeDW5ci9zOWzp092i7/s/v10PEnd3F5nmS4BCbqhI/\~/changes/1/api/client#subscribetoaction-name-string-callback-function-subscribedaction)
+
+***
 
 ## Events
 

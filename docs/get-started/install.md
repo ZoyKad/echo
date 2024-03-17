@@ -1,5 +1,7 @@
 # 🔨 Install
 
+## Main package
+
 {% hint style="info" %}
 Ensure to download the latest version of Echo before starting using it !
 {% endhint %}
@@ -34,3 +36,7 @@ Ensure to download the latest version of Echo before starting using it !
 3. Put the "Packages" folder into ReplicatedStorage and the src folder on a client/server shared space
 
 </details>
+
+## Typed package implementation
+
+If you want to have types to make it easier to code, you can use a tool like [wally-package-types](https://github.com/JohnnyMorganz/wally-package-types) that will export the types when your require the library.
