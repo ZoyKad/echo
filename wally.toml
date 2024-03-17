@@ -1,11 +1,11 @@
 [package]
 name = "zoykad/echo"
 authors = ["zoykad"]
-version = "0.1.2"
+version = "0.1.5"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 license = "MIT"
-include = ["default.project.json", "src", "src/**", "LICENSE", "wally.toml", "github.url"]
+include = ["default.project.json", "src", "src/**", "LICENSE", "wally.toml"]
 exclude = ["**"]
 
 [dependencies]
